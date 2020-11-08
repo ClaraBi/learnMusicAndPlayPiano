@@ -30,7 +30,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "lib/verovio-toolkit.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -123,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "minepiano"
+    }
+  },
+  "defaultProject": "minepiano",
+  "cli": {
+    "analytics": "b52be1ed-1f3f-47a9-86bf-97046b2fd46d"
+  }
 }
