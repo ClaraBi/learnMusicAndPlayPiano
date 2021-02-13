@@ -2,11 +2,24 @@
   <div id="side-content">
     <div class="panel">
       <app-play-control [title]="title" [mode]="mode" (modeSelected)="handleModeSelected($event)"></app-play-control>
+      
+    </div>
+    <div class="half-panel">
+      <div *ngIf="(mode == PianoMode.Play)" >
+        <app-note-info></app-note-info>
+     </div>
+     <div *ngIf="(mode == PianoMode.Quiz)" >
+      <app-quiz-record
+            [status]="quizStatus"
+            [correct]="quizCorrect"
+            [incorrect]="quizIncorrect"
+            [total]="quizLength"
+            [description]="resultDescription"
+            (buttonClicked)="handleButtonClicked($event)"></app-quiz-record>
+   </div>
     </div>
     <!-- <div class="panel">
-      <div *ngIf="(mode == PianoMode.Play)" >
-         <note-info></note-info>
-      </div>
+      
       <div *ngIf="(mode == PianoMode.Quiz)" >
          <quiz-info
             [status]="quizStatus"
@@ -16,8 +29,8 @@
             [description]="resultDescription"
             (buttonClicked)="handleButtonClicked($event)">
          </quiz-info>
-      </div>
-    </div> -->
+      </div> 
+    </div>-->
   </div>
   <div id="notation-component">
     <app-notation [mode]="mode"></app-notation>

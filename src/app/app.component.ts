@@ -95,6 +95,7 @@ export class AppComponent implements OnInit {
     }
     else if(data.button = 'try-again') {
       this.newQuiz();
+      this.handleButtonClicked({button:'start', level:'easy'})
     }
   }
 

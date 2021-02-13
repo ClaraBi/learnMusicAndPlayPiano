@@ -7,6 +7,8 @@ import { PianoKeyboardComponent } from './piano-keyboard/piano-keyboard.componen
 import { NotationComponent } from './notation/notation.component';
 import { PlayControlComponent } from './play-control/play-control.component';
 import { SafePipe } from './shared/safe.pipe';
+import { NoteInfoComponent } from './note-info/note-info.component';
+import { QuizRecordComponent } from './quiz-record/quiz-record.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { SafePipe } from './shared/safe.pipe';
     PianoKeyboardComponent,
     NotationComponent,
     PlayControlComponent,
-    SafePipe
+    SafePipe,
+    NoteInfoComponent,
+    QuizRecordComponent
   ],
   imports: [
     BrowserModule,
