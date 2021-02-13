@@ -20,7 +20,7 @@ export class QuizRecordComponent implements OnInit {
   @Input() description: string;
   @Output() buttonClicked = new EventEmitter();
   subscription: Subscription;
-  message: string;
+  message: string = "";
   constructor(private quizService: QuizService) {
     this.subscription = quizService.quizResult$.subscribe(
       result => {

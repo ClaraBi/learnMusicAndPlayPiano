@@ -1,14 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PlayControlComponent } from './play-control.component';
+import { PianoMode } from '../core/piano-mode.enum';
 
 describe('PlayControlComponent', () => {
   let component: PlayControlComponent;
   let fixture: ComponentFixture<PlayControlComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ PlayControlComponent ]
+    TestBed.configureTestingModule({
+      declarations: [ PlayControlComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   });
@@ -21,5 +23,14 @@ describe('PlayControlComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('modeSelected should emit when handlePlayBtnClick/handleQuizBtnClick called', () => {
+    spyOn(component.modeSelected, 'emit');
+    component.handlePlayBtnClick();
+    expect(component.modeSelected.emit).toHaveBeenCalledWith(PianoMode.Play);
+    component.handleQuizBtnClick();
+    expect(component.modeSelected.emit).toHaveBeenCalledWith(PianoMode.Quiz);
+
   });
 });

@@ -12,7 +12,7 @@ export class PianoKeyboardComponent implements OnInit {
 
 
   pianoKeys: PianoKey[];
-  private highlightedKeyId: number = 0;
+  highlightedKeyId: number = 0;
   
   constructor() {
     this.pianoKeys = [

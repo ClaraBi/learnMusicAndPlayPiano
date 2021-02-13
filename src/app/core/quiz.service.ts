@@ -11,10 +11,10 @@ import { QuizStatus } from './quiz-status.enum';
 
 export class QuizService {
 
-  private quizLength = 16;
-  private quizNotes: string[] = [];
-  private quizResults: QuizResult[] = [];
-  private quizIndex = 0;
+  quizLength = 16;
+  quizNotes: string[] = [];
+  quizResults: QuizResult[] = [];
+  quizIndex = 0;
 
   inProgress: boolean = false;
   correct: number = 0;
