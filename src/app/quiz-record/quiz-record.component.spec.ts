@@ -44,7 +44,7 @@ describe('QuizRecordComponent', () => {
     const val2 = { selectedKeyId: '1' , actualNote: {keyId: '2'}}
 
     fakeService.emit(val1);
-    expect(component.message).toBe("\u2714 Correct, well done!");
+    expect(component.message).toBe("\u2714 Correct");
 
     fakeService.emit(val2);
     expect(component.message).toBe("\u2718 Incorrect");

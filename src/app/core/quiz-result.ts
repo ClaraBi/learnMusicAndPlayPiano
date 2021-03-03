@@ -1,4 +1,4 @@
-import { PianoNote }  from './piano-note';
+import { PianoNote } from './piano-note';
 
 export class QuizResult {
   actualNote: PianoNote;

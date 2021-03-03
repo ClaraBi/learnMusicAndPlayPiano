@@ -126,21 +126,21 @@ export class AppComponent implements OnInit {
   }
 
   private finishQuiz() {
-    if(this.quizCorrect == this.quizLength) {
-      this.resultDescription = "Perfect score, awesome!";
-    }
-    else if(this.quizCorrect > (this.quizLength * 0.8)) {
-      this.resultDescription = "Great score, well done!";
-    }
-    else if(this.quizCorrect > (this.quizLength * 0.6)) {
-      this.resultDescription = "Good score!";
-    }
-    else if(this.quizCorrect > (this.quizLength * 0.4)) {
-      this.resultDescription = "Not bad, keep trying.";
-    }
-    else {
-      this.resultDescription = "Looks like you need more practice.";
-    }
+    // if(this.quizCorrect == this.quizLength) {
+    //   this.resultDescription = "Perfect score, awesome!";
+    // }
+    // else if(this.quizCorrect > (this.quizLength * 0.8)) {
+    //   this.resultDescription = "Great score, well done!";
+    // }
+    // else if(this.quizCorrect > (this.quizLength * 0.6)) {
+    //   this.resultDescription = "Good score!";
+    // }
+    // else if(this.quizCorrect > (this.quizLength * 0.4)) {
+    //   this.resultDescription = "Not bad, keep trying.";
+    // }
+    // else {
+    //   this.resultDescription = "Looks like you need more practice.";
+    // }
 
     this.quizStatus = QuizStatus.Finished;
   }

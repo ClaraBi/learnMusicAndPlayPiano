@@ -9,6 +9,7 @@ import { PlayControlComponent } from './play-control/play-control.component';
 import { SafePipe } from './shared/safe.pipe';
 import { NoteInfoComponent } from './note-info/note-info.component';
 import { QuizRecordComponent } from './quiz-record/quiz-record.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { QuizRecordComponent } from './quiz-record/quiz-record.component';
     PlayControlComponent,
     SafePipe,
     NoteInfoComponent,
-    QuizRecordComponent
+    QuizRecordComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

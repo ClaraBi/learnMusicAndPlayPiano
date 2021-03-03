@@ -1,5 +1,7 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { PianoKey } from './piano-key';
+import { QuizResult }  from '../core/quiz-result';
+import { QuizService } from '../core/quiz.service';
 
 @Component({
   selector: 'app-piano-keyboard',
@@ -14,7 +16,9 @@ export class PianoKeyboardComponent implements OnInit {
   pianoKeys: PianoKey[];
   highlightedKeyId: number = 0;
   
-  constructor() {
+  constructor(private quizService: QuizService) {
+
+    quizService.quizResult$.subscribe(result => this.handleQuizResult(result));
     this.pianoKeys = [
       {whiteKeyId :16} ,
       {whiteKeyId :18, blackKeyId: 17},
@@ -58,11 +62,19 @@ export class PianoKeyboardComponent implements OnInit {
 
   getColor(keyId) {
     if(keyId == this.highlightedKeyId){
-      return "#f0e68c";
+      return "#f55742";
     }
     else {
       return "";
     }
   }
+  handleQuizResult(result: QuizResult) {
+    console.log("handleQuizResult: " + result);
+    if(result.selectedKeyId != result.actualNote.keyId) {
 
+      this.highlightedKeyId = result.actualNote.keyId;
+      setTimeout(() => this.highlightedKeyId=0,1000);
+
+    }
+  }
 }
