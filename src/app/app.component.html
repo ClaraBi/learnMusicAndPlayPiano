@@ -1,7 +1,7 @@
 <div id="container">
   <div id="side-content">
     <div class="panel">
-      <app-play-control [title]="title" [mode]="mode" (modeSelected)="handleModeSelected($event)"></app-play-control>
+      <app-play-control [title]="title" [mode]="mode" (modeSelected)="handleModeSelected($event, template)"></app-play-control>
       
     </div>
     <div class="half-panel">
@@ -41,3 +41,25 @@
   </div>
 </div>
 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Choose quiz level</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-check" *ngFor="let level of quizLevel; ; let i = index">
+      <input class="form-check-input" type="radio" name="level" id="{{level}}"  [checked]= "i==0 ? true : false" (change)="onItemChange(level)">
+      <label class="form-check-label" for="{{level}}">
+        {{level}}
+      </label>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success"  (click)="startInModal()">
+      Start
+     </button>
+  </div>
+  
+</ng-template>

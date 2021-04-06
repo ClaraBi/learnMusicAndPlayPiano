@@ -1,17 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
-html {
-    box-sizing: border-box;
-    background: -webkit-linear-gradient(#023054 , #5e8094   );
-    background: -o-linear-gradient(#023054 , #5e8094    );
-    background: linear-gradient(#023054 , #5e8094  );
-    background-attachment:fixed;
-  }
+@import 'variables';
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+* {
+   box-sizing: initial !important;
+}
+// html {
+//     box-sizing: border-box;
+//     background: -webkit-linear-gradient(#023054 , #5e8094   )  !important;
+//     background: -o-linear-gradient(#023054 , #5e8094    )  !important;
+//     background: linear-gradient(#023054 , #5e8094  )  !important;
+//     background-attachment:fixed;
+//   }
 
 
   body {
      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
      margin: 0;
      padding: 0;
+     background: -webkit-linear-gradient(#023054 , #5e8094   )  !important;
+     background: -o-linear-gradient(#023054 , #5e8094    )  !important;
+     background: linear-gradient(#023054 , #5e8094  )  !important;
+     background-attachment:fixed;
+     height: 100vh;
   }
   
   .header {
@@ -24,7 +35,7 @@ html {
     background-color: #5e8094  ;
   }
 
-  .row {
+  .button-row {
      padding: 10px;
   }
   

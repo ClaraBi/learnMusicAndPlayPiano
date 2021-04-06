@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, TemplateRef, ViewChild, OnInit } from '@angular/core';
 import { Subscription }   from 'rxjs';
 import { PianoService } from './core/piano.service';
 import { SoundService } from './core/sound.service';
@@ -7,6 +7,7 @@ import { PianoNote } from './core/piano-note';
 import { PianoMode } from './core/piano-mode.enum';
 import { NotationComponent } from './notation/notation.component';
 import { QuizStatus } from './core/quiz-status.enum';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -30,13 +31,16 @@ export class AppComponent implements OnInit {
   private timeoutId : any;
   private delayMs = 1000;
 
-
+  modalRef: BsModalRef;
+  quizLevel = ['Easy', 'Medium', 'Hard']
+  choseLevel = 'Easy';
   @ViewChild(NotationComponent, {static: false}) notation: NotationComponent;
 
   constructor(
     private pianoService: PianoService,
     private soundService: SoundService,
-    private quizService: QuizService) {
+    private quizService: QuizService,
+    private modalService: BsModalService) {
       this.subscription = pianoService.notePlayed$.subscribe(note=>this.handleNotePlayed(note));
   }
 
@@ -44,21 +48,31 @@ export class AppComponent implements OnInit {
     this.soundService.initialize();
   }
 
-  handleModeSelected(selectedMode: PianoMode) {
+  handleModeSelected(selectedMode: PianoMode, template?) {
     if( this.mode == selectedMode ) return;
 
     // Mode has been changed
     this.mode = selectedMode;
     if(this.mode == PianoMode.Quiz) {
         this.newQuiz();
-        this.handleButtonClicked({button:'start', level:'easy'})
+        this.choseLevel = 'Easy';
+        this.modalRef = this.modalService.show(template);
+
+        // this.handleButtonClicked({button:'start', level:'easy'})
     }
     else {
       // Clear all notes from the notation component
       this.notation.clear();
     }
   }
+  onItemChange(value) {
+    this.choseLevel = value;
+  }
 
+  startInModal() {
+    this.modalRef.hide();
+    this.handleButtonClicked({button:'start', level: this.choseLevel.toLowerCase()})
+  }
   handleKeyPlayed(keyId: number) {
     if(this.mode == PianoMode.Play) {
         this.pianoService.playNoteByKeyId(keyId);
@@ -95,7 +109,7 @@ export class AppComponent implements OnInit {
     }
     else if(data.button = 'try-again') {
       this.newQuiz();
-      this.handleButtonClicked({button:'start', level:'easy'})
+      this.handleButtonClicked({button:'start', level: this.choseLevel.toLowerCase()})
     }
   }
 
